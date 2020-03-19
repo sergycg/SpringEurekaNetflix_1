@@ -1,0 +1,28 @@
+info:
+  component: Zuul-Server
+  
+spring:
+  application:
+    name: Zuul-Server-Microservicios
+    
+server:
+  port: 8766
+
+endpoints:
+  restart:
+    enabled: true
+    
+zuul:
+  routes:
+    public-restservice:
+      path: /routes/**
+      serviceId: servicesdata
+      
+eureka:
+  instance:
+    instanceId: ${spring.application.name}:${server.port}
+    
+ribbon:
+  eureka:
+    enabled: true  
+ 
